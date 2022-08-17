@@ -7,7 +7,7 @@ public class Tests {
     public static void main(String[] args) {
         int[][] array = fillArray();
         printArray((array));
-        printArray(deleteRowColumnWithMinElement(array, findMinElement(array)));
+        deleteRowColumnWithMinElement(array, findMinElement(array));
     }
 
     static int[][] fillArray() {
@@ -53,20 +53,16 @@ public class Tests {
         return indexes;
     }
 
-    static int[][] deleteRowColumnWithMinElement(int[][] array, int[] indexes) {
-
-        int[][] editedArr = new int[array.length][array[0].length];
+    static void deleteRowColumnWithMinElement(int[][] array, int[] indexes) {
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
-                if (i == indexes[0] || j == indexes[1]) {
-                    continue;
-                } else {
-                    editedArr[i][j] = array[i][j];
+            if (i != indexes[0]) {
+                for (int j = 0; j < array[0].length; j++) {
+                    if (j != indexes[1]) {
+                        System.out.print(array[i][j] + "\t");
+                    }
                 }
+                System.out.println();
             }
         }
-        return editedArr;
-
-
     }
 }
